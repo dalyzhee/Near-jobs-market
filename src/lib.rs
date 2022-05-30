@@ -1,15 +1,62 @@
 use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
-use near_sdk::near_bindgen;
+use near_sdk::{env, near_bindgen, AccountId};
+use near_sdk::collections::{LookupMap, Vector};
 
 #[near_bindgen]
 #[derive(Default, BorshDeserialize, BorshSerialize)]
-pub struct Contract {
-    // SETUP CONTRACT STATE
+pub struct Jobs{
+    title: String,
+    description : String,
+    date : String,
+    company : String,
+    location : String ,
+    email : String 
 }
 
 #[near_bindgen]
-impl Contract {
-    // ADD CONTRACT METHODS HERE
+#[derive(BorshDeserialize, BorshSerialize)]
+pub struct JobsMarket {
+    jobs : LookupMap<AccountId, Jobs>,
+}
+
+impl Default for JobsMarket {
+    fn default() -> Self {
+        Self {
+            jobs: LookupMap::new(b"r".to_vec()),
+        }
+    }
+}
+
+#[near_bindgen]
+impl JobsMarket {
+   
+    pub fn set_job(&mut self, title: String,
+        description : String,
+        date : String,
+        company : String,
+        location : String ,
+        email : String ) {
+        let account_id = env::signer_account_id();
+        let aJob = Jobs{
+            title: title,
+            description : description,
+            date : date,
+            company : company,
+            location : location ,
+            email : email
+        };
+        self.jobs.insert(&account_id, &aJob);
+    }
+
+    // pub fn set_job(&self)->Vector<Jobs>{
+
+    // }
+    pub fn update_job(&self){
+        // get account id
+        // get job from lokup map
+        // update
+        // if env account id !=  account id ya job reject
+    }
 }
 
 /*
