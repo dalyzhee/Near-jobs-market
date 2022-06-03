@@ -1,23 +1,16 @@
-# Rust Smart Contract Template
+# Levis Jobs Market.
 
-## Getting started
+The smart contract code  is in src `lib.rs`.
 
-To get started with this template:
 
-1. Click the "Use this template" button to create a new repo based on this template
-2. Update line 2 of `Cargo.toml` with your project name
-3. Update line 4 of `Cargo.toml` with your project author names
-4. Set up the [prerequisites](https://github.com/near/near-sdk-rs#pre-requisites)
-5. Begin writing your smart contract in `src/lib.rs`
-6. Test the contract 
+The contract contains tests.
 
-    `cargo test -- --nocapture`
 
-8. Build the contract
+# Required Software
 
-    `RUSTFLAGS='-C link-arg=-s' cargo build --target wasm32-unknown-unknown --release`
+- Rust 1.58 + cargo
+- Node.js
+- NEAR CLI 3.1
 
-**Get more info at:**
-
-* [Rust Smart Contract Quick Start](https://docs.near.org/docs/develop/contracts/rust/intro)
-* [Rust SDK Book](https://www.near-sdk.io/)
+# Authors
+- Levis Odhiambo
